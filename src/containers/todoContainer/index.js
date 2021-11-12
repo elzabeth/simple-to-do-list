@@ -13,13 +13,21 @@ const TodoContainer = () => {
     const [todos, setToDos] = useState(todoList)
 
     const handleAddToDo = (newToDo) => {
-        const newTodoList = [...todos,newToDo]
+        const newTodoList = [...todos, newToDo]
         setToDos(newTodoList)
+    }
+
+    const handleRemoveToDO = (id) => {
+        const removedTodoList = todos.filter(obj => obj.id !== id)
+        setToDos(removedTodoList)
     }
 
     return <div style={{margin:20}}>
         <h1 align="center">Todo Application</h1>
-        {todos.map(obj => <Todo todo={obj} />)}
+        {   todos.length>0 ?
+            todos.map(obj => <Todo todo={obj} removeToDo={handleRemoveToDO} />) 
+                : <p align="center">No To Do's left</p>
+        }
         <AddToDo addToDo={handleAddToDo}/>
     </div>;
 }

@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Todo(props) {
 
-    const { title, done } = props.todo
+    const { title, done, id } = props.todo
 
     return (<div>
         <input type="checkbox"
@@ -16,7 +16,9 @@ export default function Todo(props) {
             padding: "0 10px",
             cursor: "pointer",
             fontWeight: 600
-        }}>
+        }}
+            onClick={() => { props.removeToDo(id) }}
+        >
             X</span>
         <hr/>
         </div>)
