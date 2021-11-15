@@ -1,4 +1,5 @@
 import React from 'react'
+import { emitter } from '../notification/index'
 
 export default function Todo(props) {
 
@@ -13,7 +14,10 @@ export default function Todo(props) {
         <input type="checkbox"
             style={{ margin: "0 20" }}
             checked={done}
-            onChange={() => { handleCheckboxChange() } }
+            onChange={() => {
+                handleCheckboxChange()
+                emitter.emit("NOTIFICATION", "Task completed")
+            }}
         />
         <span style={done?{textDecoration:"line-through"}:null}>{title}</span>
         <span style={{
@@ -23,7 +27,10 @@ export default function Todo(props) {
             cursor: "pointer",
             fontWeight: 600
         }}
-            onClick={() => { props.removeToDo(id) }}
+            onClick={() => {
+                props.removeToDo(id)
+                emitter.emit("NOTIFICATION", "Task removed")
+            }}
         >
             X</span>
         <hr/>

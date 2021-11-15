@@ -39,6 +39,7 @@ const TodoContainer = () => {
         {   todos.length>0 ?
             todos.map(obj => <Todo
                 todo={obj}
+                key={obj.id}
                 removeToDo={handleRemoveToDO}
                 handleChange={handleCheckboxChange}
             />)

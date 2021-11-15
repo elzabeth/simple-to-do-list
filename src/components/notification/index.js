@@ -13,7 +13,7 @@ export default function Notification() {
     }
 
     const autoHideAfterTimeout = () => {
-        setTimeout(() => reset(), 2000)
+        setTimeout(() => reset(), 1000)
     }
 
     const notificationStyle = {
@@ -26,7 +26,7 @@ export default function Notification() {
 
     emitter.addListener("NOTIFICATION", (msg) => {
         setOpen(true)
-        setMsg(msg + " added successfully")
+        setMsg(msg)
         autoHideAfterTimeout()
     })
 

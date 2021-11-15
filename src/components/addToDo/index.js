@@ -9,13 +9,13 @@ const AddToDo = (props) => {
         width: "80%"
     }
 
-    const [title, setTitle] = useState()
+    const [title, setTitle] = useState("")
 
     const handleSubmit = (e) => {
         e.preventDefault()
         const newToDo = {id:Math.random(),title:title,done:false}
         props.addToDo(newToDo)
-        emitter.emit("NOTIFICATION", title)
+        emitter.emit("NOTIFICATION", "Task added")
         setTitle("")
     }
 
