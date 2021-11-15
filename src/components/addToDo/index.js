@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import {emitter} from '../notification/index'
 
 const AddToDo = (props) => {
 
@@ -14,6 +15,7 @@ const AddToDo = (props) => {
         e.preventDefault()
         const newToDo = {id:Math.random(),title:title,done:false}
         props.addToDo(newToDo)
+        emitter.emit("NOTIFICATION", title)
         setTitle("")
     }
 

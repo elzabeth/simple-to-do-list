@@ -1,6 +1,8 @@
 import React, {useState} from 'react'
 import Todo from '../../components/todoList/index'
 import AddToDo from '../../components/addToDo/index'
+import Notification from '../../components/notification/index'
+
 
 const todoList = [
     { key: 1,id: 1, title: 'Learn React', done: true },
@@ -22,10 +24,24 @@ const TodoContainer = () => {
         setToDos(removedTodoList)
     }
 
-    return <div style={{margin:20}}>
+    const handleCheckboxChange = (id) => {
+        const updatedObject = todos.map(obj => {
+            if (obj.id === id) 
+                return { ...obj,done:!(obj.done)}
+            return obj
+        })
+        setToDos(updatedObject)
+    }
+
+    return <div style={{ margin: 20 }}>
         <h1 align="center">Todo Application</h1>
+        <Notification />
         {   todos.length>0 ?
-            todos.map(obj => <Todo todo={obj} removeToDo={handleRemoveToDO} />) 
+            todos.map(obj => <Todo
+                todo={obj}
+                removeToDo={handleRemoveToDO}
+                handleChange={handleCheckboxChange}
+            />)
                 : <p align="center">No To Do's left</p>
         }
         <AddToDo addToDo={handleAddToDo}/>
