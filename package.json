@@ -1,7 +1,7 @@
 {
   "name": "simple-to-do-list",
   "version": "0.1.0",
-  "homepage": "https://elzabeth.github.io/simple-to-do-list",
+  "homepage": "https://elzabeth.github.io/simple-to-do-list/",
   "private": true,
   "dependencies": {
     "gh-pages": "^3.2.3",
